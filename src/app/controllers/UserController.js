@@ -1,4 +1,5 @@
 import User from "../models/User";
+import File from "../models/File";
 
 class UserController {
   async store(req, res) {
@@ -34,7 +35,7 @@ class UserController {
 
     await user.update(req.body);
 
-    const { id, name, provider } = await User.findByPk(userId, {
+    const { id, name, provider, avatar } = await User.findByPk(userId, {
       include: [
         {
           model: File,
